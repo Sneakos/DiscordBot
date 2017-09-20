@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My own Discord bot",
   "main": "bot.js",
-  "author": "YOUR-NAME-HERE",
+  "author": "Alex Van Keulen",
   "dependencies": {
     "discord.io": "^2.5.2",
     "winston": "^2.3.1"
