@@ -12,7 +12,7 @@ var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
-var commands = [ 'ping', 'you pass butter', 'commands' ];
+var commands = [ 'ping', 'you pass butter', 'commands', 'hands up' ];
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
@@ -36,7 +36,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'youpassbutter':
 				bot.sendMessage({
                     to: channelID,
-                    message: 'Oh my god'
+                    message: 'Oh My God'
                 });			
 			break;
 			case 'commands':
@@ -45,12 +45,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				{
 					output += "\t!" + commands[i] + '\n';
 				}
-				output += '}';
+				output += '\t(and maybe some hidden ones)\n}';
 				bot.sendMessage({
                     to: channelID,
                     message: output
                 });	
 			break;
+			case 'handsup':
+				bot.sendMessage({
+                    to: channelID,
+                    message: 'Don\'t Shoot'
+                });			
+			break;
+			case 'bang':
+				bot.sendMessage({
+                    to: channelID,
+                    message: 'Pew Pew'
+                });	
+			
+			//hidden commands
+			/*obviously these are hidden*/
+			
+			//unknown command
 			default:
 					bot.sendMessage({
                     to: channelID,
