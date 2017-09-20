@@ -12,6 +12,7 @@ var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
+var commands = [ 'ping', 'you pass butter', 'commands' ];
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
@@ -21,11 +22,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-       
-        args = args.splice(1);
-        switch(cmd) {
+		message = message.replace(/\s/g, '');
+		message = message.toLowerCase();
+		message = message.substring(1,message.length);
+        switch(message) {
             // !ping
             case 'ping':
                 bot.sendMessage({
@@ -39,6 +39,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Oh my god'
                 });			
 			break;
+			case 'commands':
+				var output = '{\n';
+				for(var i = 0; i < commands.length; i++)
+				{
+					output += "\t!" + commands[i] + '\n';
+				}
+				output += '}';
+				bot.sendMessage({
+                    to: channelID,
+                    message: output
+                });	
+			break;
+			default:
+					bot.sendMessage({
+                    to: channelID,
+                    message: 'Unknown command. For a list of commands, type !commands'
+                });	
             // Just add any case commands if you want to..
          }
      }
