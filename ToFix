@@ -1,0 +1,3 @@
+Scraping is far from perfect, could use a lot of refinement. In particular, no error message for wrong things (do to current logic not allowing it), it oesn't prevent you from scraping random things from the site, it only scrapes from one site, and some of the pictures don't load properly. Also, seeding seems to be a problem, at least for me. The "random" picture choice doesn't appear to be random...
+
+But it does work, so there's that.
